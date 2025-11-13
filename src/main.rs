@@ -82,7 +82,7 @@ async fn main() -> anyhow::Result<()> {
 
     tracing::info!("Starting consumer and producer");
 
-    let handles = vec![
+    let handles = [
         tokio::spawn(consumer(environment.clone(), stream_name, num)),
         tokio::spawn(producer(environment.clone(), stream_name, num)),
     ];
