@@ -76,7 +76,7 @@ async fn main() -> anyhow::Result<()> {
 
     environment
         .stream_creator()
-        .max_length(ByteCapacity::GB(5))
+        .max_length(ByteCapacity::KB(5))
         .create(stream_name)
         .await?;
 
@@ -87,10 +87,7 @@ async fn main() -> anyhow::Result<()> {
         tokio::spawn(producer(environment.clone(), stream_name, num)),
     ];
 
-    futures::future::join_all(handles.into_iter())
-        .await
-        .into_iter()
-        .collect::<Result<Vec<_>, _>>()?;
+    futures::future::try_join_all(handles.into_iter()).await?;
 
     tracing::info!("Deleting stream {}", stream_name);
 
