@@ -9,26 +9,15 @@
   "properties": {
     "some_string": {
       "type": "string",
-      "description": "Personal information",
+      "description": "Some string",
       "properties": {},
       "required": []
     },
     "some_number": {
       "type": "number",
-      "description": "List of hobbies",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of the hobby"
-          },
-          "yearsExperience": {
-            "type": "number",
-            "description": "Years of experience"
-          }
-        }
-      }
+      "description": "Some number",
+      "properties": {},
+      "required": []
     }
   }
 }
